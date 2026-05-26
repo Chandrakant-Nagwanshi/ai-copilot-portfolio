@@ -67,7 +67,7 @@ export default function ChatInput({
         disabled={isTyping}
         placeholder={placeholder}
         autoFocus={autoFocus}
-        className="w-full bg-[#18181C] border border-white/5 rounded-2xl py-4 pl-5 pr-14 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-violet-500/50 transition-all disabled:opacity-60 shadow-inner"
+        className="w-full bg-[#18181C] border border-white/5 rounded-2xl py-4 pl-5 pr-14 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-violet-500/50 transition-all disabled:opacity-60 shadow-inner"
       />
       <button
         type="submit"

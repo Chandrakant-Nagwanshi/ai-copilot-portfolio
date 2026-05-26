@@ -10,7 +10,22 @@ import { useChat } from "../chat/ChatContext";
 export default function Contact() {
   const [resumeState, setResumeState] = useState<"idle" | "generating" | "complete">("idle");
   const [progress, setProgress] = useState(0);
+  const [emailCopied, setEmailCopied] = useState(false);
   const { openPanel } = useChat();
+
+  const handleEmailClick = async () => {
+    const email = resumeData.personalInfo.email;
+    try {
+      await navigator.clipboard.writeText(email);
+    } catch {
+      // older browsers — silently fall through; mailto attempt below still runs
+    }
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2500);
+
+    // Also attempt to open the default mail client (works only if one is registered).
+    window.location.href = `mailto:${email}?subject=Opportunity for Chandrakant`;
+  };
 
   const handleDownloadResume = () => {
     if (resumeState !== "idle") return;
@@ -23,37 +38,12 @@ export default function Contact() {
           clearInterval(interval);
           setResumeState("complete");
 
-          const resumeText = `CHANDRAKANT NAGWANSHI
-React JS Developer · Bhopal, India
-Email: ${resumeData.personalInfo.email}
-Phone: ${resumeData.personalInfo.phone}
-GitHub: ${resumeData.personalInfo.github}
-LinkedIn: ${resumeData.personalInfo.linkedin}
-
-SUMMARY
-${resumeData.summary}
-
-EXPERIENCE
-${resumeData.experience
-  .map(
-    (e) => `${e.role} — ${e.company} (${e.duration})
-${e.projects?.map((p) => `  • ${p.name} [${p.role}]: ${p.description}`).join("\n") || ""}
-${e.highlights?.map((h) => `  • ${h}`).join("\n") || ""}`
-  )
-  .join("\n\n")}
-
-EDUCATION
-${resumeData.education.map((ed) => `${ed.degree} — ${ed.institution} (${ed.duration})`).join("\n")}`;
-
-          const blob = new Blob([resumeText], { type: "text/plain" });
-          const url = URL.createObjectURL(blob);
           const link = document.createElement("a");
-          link.href = url;
-          link.download = "Chandrakant_Nagwanshi_Resume.txt";
+          link.href = "/Chandrakant_Nagwanshi_Resume.pdf";
+          link.download = "Chandrakant_Nagwanshi_Resume.pdf";
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
-          URL.revokeObjectURL(url);
 
           setTimeout(() => setResumeState("idle"), 3000);
           return 100;
@@ -92,18 +82,26 @@ ${resumeData.education.map((ed) => `${ed.degree} — ${ed.institution} (${ed.dur
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
               viewport={{ once: true }}
-              className="text-gray-400 text-sm md:text-base mt-5 leading-relaxed max-w-md"
+              className="text-gray-300 text-base md:text-lg mt-5 leading-relaxed max-w-md"
             >
               I respond to recruiter messages within 24 hours. Reach out directly, or have my AI copilot answer screening questions first.
             </motion.p>
 
             <div className="flex flex-wrap gap-3 mt-8">
-              <MagneticButton
-                onClick={() => (window.location.href = `mailto:${resumeData.personalInfo.email}`)}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-sm font-display font-black transition-colors shadow-xl shadow-violet-500/20 cursor-pointer"
+              <button
+                onClick={handleEmailClick}
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-sm font-display font-black transition-all shadow-xl shadow-violet-500/20 hover:shadow-violet-500/40 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
-                <Mail className="w-4 h-4" /> Email me
-              </MagneticButton>
+                {emailCopied ? (
+                  <>
+                    <Check className="w-4 h-4 text-emerald-300" /> Copied — paste in your mail app!
+                  </>
+                ) : (
+                  <>
+                    <Mail className="w-4 h-4" /> Email me
+                  </>
+                )}
+              </button>
               <MagneticButton
                 onClick={openPanel}
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm font-display font-black transition-colors cursor-pointer"
@@ -135,18 +133,24 @@ ${resumeData.education.map((ed) => `${ed.degree} — ${ed.institution} (${ed.dur
           </div>
 
           <div className="grid grid-cols-1 gap-4">
-            <a
-              href={`mailto:${resumeData.personalInfo.email}`}
-              className="group flex items-center gap-4 p-5 rounded-2xl bg-white/3 border border-white/8 hover:border-violet-500/30 transition-colors"
+            <button
+              onClick={handleEmailClick}
+              className="group flex items-center gap-4 p-5 rounded-2xl bg-white/3 border border-white/8 hover:border-violet-500/30 transition-colors text-left w-full cursor-pointer"
             >
               <div className="w-11 h-11 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center shrink-0 group-hover:bg-violet-500/20 transition-colors">
-                <Mail className="w-5 h-5 text-violet-400" />
+                {emailCopied ? (
+                  <Check className="w-5 h-5 text-emerald-400" />
+                ) : (
+                  <Mail className="w-5 h-5 text-violet-400" />
+                )}
               </div>
-              <div className="min-w-0">
-                <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest font-display block">Email</span>
-                <span className="text-sm font-bold text-white truncate block">{resumeData.personalInfo.email}</span>
+              <div className="min-w-0 flex-1">
+                <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest font-display block">
+                  {emailCopied ? "Copied to clipboard" : "Email · click to copy"}
+                </span>
+                <span className="text-base font-bold text-white truncate block">{resumeData.personalInfo.email}</span>
               </div>
-            </a>
+            </button>
 
             <a
               href={`tel:${resumeData.personalInfo.phone}`}
@@ -157,7 +161,7 @@ ${resumeData.education.map((ed) => `${ed.degree} — ${ed.institution} (${ed.dur
               </div>
               <div>
                 <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest font-display block">Phone</span>
-                <span className="text-sm font-bold text-white">{resumeData.personalInfo.phone}</span>
+                <span className="text-base font-bold text-white">{resumeData.personalInfo.phone}</span>
               </div>
             </a>
 
@@ -167,7 +171,7 @@ ${resumeData.education.map((ed) => `${ed.degree} — ${ed.institution} (${ed.dur
               </div>
               <div>
                 <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest font-display block">Location</span>
-                <span className="text-sm font-bold text-white">{resumeData.personalInfo.location}</span>
+                <span className="text-base font-bold text-white">{resumeData.personalInfo.location}</span>
               </div>
             </div>
 
@@ -176,7 +180,7 @@ ${resumeData.education.map((ed) => `${ed.degree} — ${ed.institution} (${ed.dur
                 href={`https://${resumeData.personalInfo.github}`}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center gap-2 p-4 rounded-2xl bg-white/3 border border-white/8 hover:border-violet-500/30 text-violet-300 hover:text-white text-xs font-black transition-colors"
+                className="flex items-center justify-center gap-2 p-4 rounded-2xl bg-white/3 border border-white/8 hover:border-violet-500/30 text-violet-300 hover:text-white text-sm font-black transition-colors"
               >
                 GitHub <ExternalLink className="w-3.5 h-3.5" />
               </a>
@@ -184,7 +188,7 @@ ${resumeData.education.map((ed) => `${ed.degree} — ${ed.institution} (${ed.dur
                 href={`https://${resumeData.personalInfo.linkedin}`}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center gap-2 p-4 rounded-2xl bg-white/3 border border-white/8 hover:border-cyan-500/30 text-cyan-300 hover:text-white text-xs font-black transition-colors"
+                className="flex items-center justify-center gap-2 p-4 rounded-2xl bg-white/3 border border-white/8 hover:border-cyan-500/30 text-cyan-300 hover:text-white text-sm font-black transition-colors"
               >
                 LinkedIn <ExternalLink className="w-3.5 h-3.5" />
               </a>

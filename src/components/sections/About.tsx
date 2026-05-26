@@ -47,7 +47,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-gray-300 text-base md:text-lg leading-relaxed"
+            className="text-gray-300 text-lg md:text-xl leading-relaxed"
           >
             {resumeData.summary}
           </motion.p>
@@ -70,7 +70,7 @@ export default function About() {
                     {f.label}
                   </span>
                 </div>
-                <p className="text-white text-sm font-bold">{f.value}</p>
+                <p className="text-white text-base font-bold">{f.value}</p>
               </motion.div>
             ))}
           </div>

@@ -109,7 +109,7 @@ export default function Hero() {
               <button
                 key={q}
                 onClick={() => handlePrompt(q)}
-                className="px-3 py-1.5 rounded-full text-[11px] font-semibold bg-white/3 hover:bg-violet-500/10 border border-white/8 hover:border-violet-500/30 text-gray-300 hover:text-white transition-all cursor-pointer"
+                className="px-3.5 py-2 rounded-full text-xs md:text-sm font-semibold bg-white/3 hover:bg-violet-500/10 border border-white/8 hover:border-violet-500/30 text-gray-300 hover:text-white transition-all cursor-pointer"
               >
                 {q}
               </button>

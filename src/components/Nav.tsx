@@ -86,7 +86,7 @@ export default function Nav() {
               key={item.id}
               href={`#${item.id}`}
               onClick={handleJump(item.id)}
-              className="relative px-4 py-2 text-xs font-bold rounded-full transition-colors cursor-pointer"
+              className="relative px-4 py-2 text-sm font-bold rounded-full transition-colors cursor-pointer"
             >
               {active === item.id && (
                 <motion.span
@@ -104,7 +104,7 @@ export default function Nav() {
 
         <button
           onClick={openPanel}
-          className="flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white shadow-md shadow-violet-500/20 transition-all active:scale-95 cursor-pointer"
+          className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold bg-violet-600 hover:bg-violet-500 text-white shadow-md shadow-violet-500/20 transition-all active:scale-95 cursor-pointer"
         >
           <Sparkles className="w-3.5 h-3.5" />
           <span className="hidden sm:inline">Ask AI</span>

@@ -91,14 +91,14 @@ export default function Skills() {
               Proficiency
             </h4>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-5">
             {proficiencies.map((p, i) => (
               <div key={p.name}>
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-xs font-semibold text-gray-200">{p.name}</span>
-                  <span className="text-[10px] font-mono text-gray-500 font-bold">{p.level}%</span>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-semibold text-gray-100">{p.name}</span>
+                  <span className="text-xs font-mono text-gray-400 font-bold">{p.level}%</span>
                 </div>
-                <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                <div className="h-2 bg-white/5 rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: `${p.level}%` }}
@@ -121,8 +121,8 @@ export default function Skills() {
         >
           {stats.map((s) => (
             <div key={s.label} className="glass rounded-2xl p-5 flex flex-col justify-center text-center">
-              <span className="text-2xl md:text-3xl font-display font-black text-gradient">{s.value}</span>
-              <span className="text-[10px] text-gray-400 mt-1 font-bold tracking-wide leading-tight">{s.label}</span>
+              <span className="text-3xl md:text-4xl font-display font-black text-gradient">{s.value}</span>
+              <span className="text-xs text-gray-400 mt-1.5 font-bold tracking-wide leading-tight">{s.label}</span>
             </div>
           ))}
         </motion.div>
@@ -142,7 +142,7 @@ export default function Skills() {
           </div>
           <div className="flex flex-wrap gap-2">
             {resumeData.skills.realTimeAndApis.map((s) => (
-              <span key={s} className="px-3.5 py-2 rounded-lg text-xs font-bold bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+              <span key={s} className="px-4 py-2 rounded-lg text-sm font-bold bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
                 {s}
               </span>
             ))}
@@ -164,7 +164,7 @@ export default function Skills() {
           </div>
           <div className="flex flex-wrap gap-2">
             {resumeData.skills.stateManagement.map((s) => (
-              <span key={s} className="px-3.5 py-2 rounded-lg text-xs font-bold bg-white/5 border border-white/10 text-gray-200">
+              <span key={s} className="px-4 py-2 rounded-lg text-sm font-bold bg-white/5 border border-white/10 text-gray-200">
                 {s}
               </span>
             ))}
@@ -186,7 +186,7 @@ export default function Skills() {
           </div>
           <div className="flex flex-wrap gap-2">
             {resumeData.skills.formsAndValidation.map((s) => (
-              <span key={s} className="px-3 py-1.5 rounded-lg text-[11px] font-semibold bg-white/3 border border-white/5 text-gray-300">
+              <span key={s} className="px-3.5 py-2 rounded-lg text-sm font-semibold bg-white/3 border border-white/5 text-gray-300">
                 {s}
               </span>
             ))}
@@ -208,7 +208,7 @@ export default function Skills() {
           </div>
           <div className="flex flex-wrap gap-2">
             {resumeData.skills.stylingAndComponents.map((s) => (
-              <span key={s} className="px-3 py-1.5 rounded-lg text-[11px] font-semibold bg-white/3 border border-white/5 text-gray-300">
+              <span key={s} className="px-3.5 py-2 rounded-lg text-sm font-semibold bg-white/3 border border-white/5 text-gray-300">
                 {s}
               </span>
             ))}
@@ -230,7 +230,7 @@ export default function Skills() {
           </div>
           <div className="flex flex-wrap gap-2">
             {resumeData.skills.backendAndTools.map((s) => (
-              <span key={s} className="px-3 py-1.5 rounded-lg text-[11px] font-semibold bg-white/3 border border-white/5 text-gray-300">
+              <span key={s} className="px-3.5 py-2 rounded-lg text-sm font-semibold bg-white/3 border border-white/5 text-gray-300">
                 {s}
               </span>
             ))}
@@ -252,7 +252,7 @@ export default function Skills() {
           </div>
           <div className="flex flex-wrap gap-2">
             {resumeData.skills.performanceOptimization.map((s) => (
-              <span key={s} className="px-3.5 py-2 rounded-lg text-xs font-black bg-amber-500/10 border border-amber-500/20 text-amber-400">
+              <span key={s} className="px-4 py-2 rounded-lg text-sm font-black bg-amber-500/10 border border-amber-500/20 text-amber-400">
                 {s}
               </span>
             ))}

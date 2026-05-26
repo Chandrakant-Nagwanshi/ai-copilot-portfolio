@@ -155,7 +155,7 @@ export default function Playground() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-gray-400 text-sm md:text-base mt-4 leading-relaxed"
+          className="text-gray-400 text-base md:text-lg mt-5 leading-relaxed"
         >
           Two live mock-ups of systems I shipped in production. Click around — they&apos;re fully interactive.
         </motion.p>
@@ -177,8 +177,8 @@ export default function Playground() {
               <span className="px-3 py-1 rounded text-[9px] font-black bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase tracking-widest font-display">
                 E-Procurement · Real-time
               </span>
-              <h3 className="text-xl md:text-2xl font-display font-black text-white mt-2 tracking-tight">Live WebSocket Auction</h3>
-              <p className="text-xs text-gray-400 mt-1">Simulates STOMP state synchronization and a live trend chart.</p>
+              <h3 className="text-2xl md:text-3xl font-display font-black text-white mt-2 tracking-tight">Live WebSocket Auction</h3>
+              <p className="text-sm text-gray-400 mt-1.5">Simulates STOMP state synchronization and a live trend chart.</p>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-white/3 rounded-xl text-xs border border-white/5 font-mono text-cyan-400 shadow-inner">
               <Timer className="w-3.5 h-3.5 animate-spin text-cyan-400" />
@@ -262,7 +262,7 @@ export default function Playground() {
           </div>
 
           {bidStatus && (
-            <div className="mt-4 px-4 py-3 bg-violet-500/10 border border-violet-500/20 rounded-xl text-xs text-violet-300 font-bold text-center flex items-center justify-center gap-2 shadow-inner">
+            <div className="mt-4 px-4 py-3 bg-violet-500/10 border border-violet-500/20 rounded-xl text-sm text-violet-300 font-bold text-center flex items-center justify-center gap-2 shadow-inner">
               <Award className="w-4 h-4 text-violet-400" />
               {bidStatus}
             </div>
@@ -284,7 +284,7 @@ export default function Playground() {
               Healthcare · Mental Health
             </span>
             <h3 className="text-xl md:text-2xl font-display font-black text-white mt-2 tracking-tight">PsychUp Timed Assessment</h3>
-            <p className="text-xs text-gray-400 mt-1">Role-based timer scoring and conditional question logic.</p>
+            <p className="text-sm text-gray-400 mt-1.5">Role-based timer scoring and conditional question logic.</p>
           </div>
 
           {!testActive ? (
@@ -293,8 +293,8 @@ export default function Playground() {
                 <Timer className="w-6 h-6 text-violet-400" />
               </div>
               <div>
-                <h4 className="font-display font-black text-white text-sm">Interactive Assessment Engine</h4>
-                <p className="text-xs text-gray-400 mt-2 max-w-[400px] mx-auto leading-relaxed">
+                <h4 className="font-display font-black text-white text-lg">Interactive Assessment Engine</h4>
+                <p className="text-sm text-gray-400 mt-2 max-w-[420px] mx-auto leading-relaxed">
                   Take a timed technical test simulating the PsychUp scoring logic under pressure.
                 </p>
               </div>
@@ -322,7 +322,7 @@ export default function Playground() {
                 </span>
               </div>
 
-              <h4 className="font-display font-bold text-white text-sm leading-relaxed mb-5">
+              <h4 className="font-display font-bold text-white text-base md:text-lg leading-relaxed mb-5">
                 {testQuestions[currentQuestion].text}
               </h4>
 
@@ -331,7 +331,7 @@ export default function Playground() {
                   <button
                     key={idx}
                     onClick={() => handleNextQuestion(idx)}
-                    className="w-full text-left p-4 rounded-xl border border-white/5 bg-white/3 hover:bg-white/5 hover:border-violet-500/30 text-xs font-semibold text-gray-300 hover:text-white transition-all duration-300 cursor-pointer"
+                    className="w-full text-left p-4 rounded-xl border border-white/5 bg-white/3 hover:bg-white/5 hover:border-violet-500/30 text-sm font-semibold text-gray-200 hover:text-white transition-all duration-300 cursor-pointer"
                   >
                     {opt}
                   </button>
@@ -341,12 +341,12 @@ export default function Playground() {
           )}
 
           {testScore !== null && !testActive && (
-            <div className="mt-4 p-5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center justify-between text-xs shadow-inner">
+            <div className="mt-4 p-5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center justify-between text-sm shadow-inner">
               <div className="flex items-center gap-2.5 text-emerald-300 font-bold">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                 <span>Mock test finished!</span>
               </div>
-              <span className="font-black font-mono text-emerald-400 bg-emerald-500/5 px-3 py-1 rounded-lg border border-emerald-500/10">
+              <span className="font-black font-mono text-emerald-400 bg-emerald-500/5 px-3 py-1.5 rounded-lg border border-emerald-500/10">
                 Score: {testScore}%
               </span>
             </div>

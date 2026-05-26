@@ -116,7 +116,7 @@ export default function FloatingChat() {
                     <button
                       key={c.label}
                       onClick={() => sendMessage(c.query)}
-                      className="shrink-0 px-3 py-1.5 rounded-full text-[10px] font-bold bg-white/5 hover:bg-violet-500/15 hover:border-violet-500/30 border border-white/5 text-gray-300 hover:text-white transition-all cursor-pointer"
+                      className="shrink-0 px-3 py-1.5 rounded-full text-xs font-bold bg-white/5 hover:bg-violet-500/15 hover:border-violet-500/30 border border-white/5 text-gray-300 hover:text-white transition-all cursor-pointer"
                     >
                       {c.label}
                     </button>
