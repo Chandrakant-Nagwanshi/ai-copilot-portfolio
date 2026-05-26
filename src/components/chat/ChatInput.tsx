@@ -33,9 +33,9 @@ export default function ChatInput({
   if (variant === "hero") {
     return (
       <form onSubmit={handleSubmit} className="relative w-full max-w-2xl group">
-        <div className="absolute -inset-0.5 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-cyan-500 rounded-2xl blur opacity-40 group-focus-within:opacity-70 transition duration-500" />
-        <div className="relative flex items-center bg-[#0E0E11]/95 border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
-          <Sparkles className="ml-4 w-4 h-4 text-violet-400 shrink-0" />
+        <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-cyan-500 rounded-2xl blur-md opacity-70 group-focus-within:opacity-100 animate-pulse-slow transition duration-500" />
+        <div className="relative flex items-center bg-[#1A1A22] border border-white/15 rounded-2xl shadow-2xl overflow-hidden">
+          <Sparkles className="ml-4 w-5 h-5 text-violet-300 shrink-0" />
           <input
             type="text"
             value={value}
@@ -43,15 +43,15 @@ export default function ChatInput({
             disabled={isTyping}
             placeholder={placeholder}
             autoFocus={autoFocus}
-            className="flex-1 bg-transparent px-3 py-4 text-sm text-white placeholder-gray-500 focus:outline-none disabled:opacity-60"
+            className="flex-1 bg-transparent px-3 py-4 text-base text-white placeholder-gray-400 focus:outline-none disabled:opacity-60"
           />
           <button
             type="submit"
             disabled={!value.trim() || isTyping}
-            className="mr-2 px-4 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-500 disabled:bg-white/5 disabled:text-gray-500 text-white text-xs font-bold tracking-wide transition-all flex items-center gap-2 active:scale-95 cursor-pointer"
+            className="mr-2 px-5 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 disabled:from-white/10 disabled:to-white/10 disabled:text-gray-500 text-white text-sm font-display font-black tracking-wide transition-all flex items-center gap-2 active:scale-95 cursor-pointer shadow-lg shadow-violet-500/30 disabled:shadow-none"
           >
-            Ask
-            <Send className="w-3.5 h-3.5" />
+            Ask AI
+            <Send className="w-4 h-4" />
           </button>
         </div>
       </form>
