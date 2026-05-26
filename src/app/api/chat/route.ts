@@ -103,12 +103,13 @@ Once added, restart your development server, and this AI Copilot will be fully a
       isFallback: false
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("AI Chat Route Error:", error);
-    return Response.json({ 
+    const message = error instanceof Error ? error.message : "Unknown Connection Error";
+    return Response.json({
       content: `⚠️ **Ah, something went wrong with the AI chat connection.**
 
-Error Detail: \`${error.message || "Unknown Connection Error"}\`
+Error Detail: \`${message}\`
 
 Please check that your \`.env.local\` has a valid \`GEMINI_API_KEY\` and that you are connected to the internet.`,
       isError: true 
