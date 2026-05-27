@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, Briefcase, Clock, MapPin, Sparkles } from "lucide-react";
+import { ArrowDown, Briefcase, Clock, MapPin } from "lucide-react";
 import ChatInput from "../chat/ChatInput";
 import { useChat } from "../chat/ChatContext";
 
@@ -159,10 +159,6 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      <div className="absolute top-28 right-6 hidden lg:flex items-center gap-2 text-[10px] text-gray-500 font-mono">
-        <Sparkles className="w-3 h-3 text-violet-400" />
-        <span>Powered by Gemini 2.5 Flash</span>
-      </div>
     </section>
   );
 }
