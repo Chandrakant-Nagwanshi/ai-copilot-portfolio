@@ -42,10 +42,10 @@ const projects: PersonalProject[] = [
     tagline: "Multiplayer live auction · WebSocket bidding in real time",
     description:
       "The same real-time sync pattern I shipped on Lincpay's e-procurement auction — public, multiplayer, and 100% my code. Join via room code on two phones and watch the prices fight live.",
-    stack: ["Next.js", "TypeScript", "Supabase Realtime", "Recharts", "Tailwind"],
-    status: "in-progress",
-    demoUrl: null,
-    githubUrl: null,
+    stack: ["Next.js", "TypeScript", "Supabase Realtime", "Tailwind"],
+    status: "live",
+    demoUrl: "https://bidwars-alpha.vercel.app",
+    githubUrl: "https://github.com/Chandrakant-Nagwanshi/bidwars",
     accent: "violet",
   },
   {
