@@ -140,7 +140,7 @@ export default function Playground() {
           viewport={{ once: true }}
           className="inline-block px-3 py-1.5 rounded-lg text-[10px] font-black tracking-widest uppercase bg-violet-500/10 text-violet-400 border border-violet-500/20 mb-4 font-display"
         >
-          04 · Playground
+          05 · Playground
         </motion.span>
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
