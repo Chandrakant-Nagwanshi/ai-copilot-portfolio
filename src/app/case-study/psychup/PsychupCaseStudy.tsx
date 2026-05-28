@@ -239,8 +239,8 @@ export default function PsychupCaseStudy() {
       </motion.header>
 
       <main className="relative">
-        <div className="mesh-gradient animate-pulse-slow" />
-        <div className="noise-overlay" />
+        {/* Static gradient — no pulse animation so it doesn't repaint during scroll. */}
+        <div className="absolute inset-x-0 top-0 h-[80vh] pointer-events-none bg-[radial-gradient(at_20%_15%,rgba(139,92,246,0.18)_0px,transparent_50%),radial-gradient(at_80%_5%,rgba(34,211,238,0.12)_0px,transparent_50%)]" />
 
         {/* HERO */}
         <section className="relative pt-20 pb-16 px-5 md:px-10 max-w-[1200px] mx-auto">
@@ -275,7 +275,7 @@ export default function PsychupCaseStudy() {
             className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10"
           >
             {stats.map((s) => (
-              <div key={s.label} className="glass rounded-2xl p-5 hover:border-violet-500/30 transition-colors group">
+              <div key={s.label} className="panel rounded-2xl p-5 hover:border-violet-500/30 transition-colors group">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-9 h-9 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center group-hover:bg-violet-500/20 transition-colors">
                     <s.icon className="w-4 h-4 text-violet-400" />
@@ -372,7 +372,7 @@ export default function PsychupCaseStudy() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 }}
                 viewport={{ once: true }}
-                className="glass rounded-2xl p-6 hover:border-violet-500/30 transition-colors"
+                className="panel rounded-2xl p-6 hover:border-violet-500/30 transition-colors"
               >
                 <h3 className="text-base font-display font-black text-white mb-2">{p.head}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">{p.body}</p>
@@ -404,7 +404,7 @@ export default function PsychupCaseStudy() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 }}
                 viewport={{ once: true }}
-                className="glass rounded-2xl p-6 hover:border-cyan-500/30 transition-colors"
+                className="panel rounded-2xl p-6 hover:border-cyan-500/30 transition-colors"
               >
                 <h3 className="text-lg font-display font-black text-white mb-2">{d.title}</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">{d.body}</p>
@@ -428,7 +428,7 @@ export default function PsychupCaseStudy() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 }}
                 viewport={{ once: true }}
-                className="glass rounded-2xl p-6 hover:border-emerald-500/30 transition-colors"
+                className="panel rounded-2xl p-6 hover:border-emerald-500/30 transition-colors"
               >
                 <h3 className="text-lg font-display font-black text-white mb-2">{c.title}</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">{c.body}</p>
@@ -448,7 +448,7 @@ export default function PsychupCaseStudy() {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="glass rounded-3xl p-8"
+            className="panel rounded-3xl p-8"
           >
             <p className="text-gray-200 text-lg leading-relaxed">
               A production application that looks and behaves like a senior-team product, built and maintained primarily by one frontend engineer — covering three role-based experiences, an end-to-end testing/reporting pipeline, and payment infrastructure, all on a single shared design and component foundation.
@@ -471,7 +471,7 @@ export default function PsychupCaseStudy() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.04 }}
                 viewport={{ once: true }}
-                className="glass rounded-2xl p-5"
+                className="panel rounded-2xl p-5"
               >
                 <h4 className="text-[10px] font-black text-violet-400 uppercase tracking-widest mb-3 font-display">
                   {category}
@@ -506,7 +506,7 @@ export default function PsychupCaseStudy() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.06 }}
                 viewport={{ once: true }}
-                className="glass rounded-2xl p-6 flex gap-5 items-start"
+                className="panel rounded-2xl p-6 flex gap-5 items-start"
               >
                 <div className="shrink-0 w-10 h-10 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center font-display font-black text-violet-300 text-sm">
                   {String(i + 1).padStart(2, "0")}
@@ -572,7 +572,7 @@ export default function PsychupCaseStudy() {
 
         {/* CTA */}
         <section className="relative py-24 px-5 md:px-10 max-w-[1100px] mx-auto">
-          <div className="relative glass rounded-3xl p-10 md:p-16 overflow-hidden">
+          <div className="relative panel rounded-3xl p-10 md:p-16 overflow-hidden">
             <div className="absolute -top-32 -left-32 w-[28rem] h-[28rem] rounded-full bg-violet-600/15 blur-[120px] pointer-events-none" />
             <div className="absolute -bottom-32 -right-32 w-[28rem] h-[28rem] rounded-full bg-cyan-500/15 blur-[120px] pointer-events-none" />
             <div className="relative text-center">

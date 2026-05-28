@@ -90,11 +90,19 @@ body {
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
 }
 
-/* Glass card */
+/* Glass card — uses backdrop-filter; expensive when many overlap on screen */
 .glass {
   background: rgba(18, 18, 21, 0.55);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Solid panel — same visual register as .glass without backdrop-filter cost.
+   Use on dense pages (e.g. case studies) where many cards are visible at once
+   and the always-running compositing of .glass causes scroll jank. */
+.panel {
+  background: rgba(20, 20, 24, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
