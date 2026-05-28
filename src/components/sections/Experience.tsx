@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useRef } from "react";
+import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { GraduationCap, MessageSquareText } from "lucide-react";
+import { ArrowRight, GraduationCap, MessageSquareText } from "lucide-react";
 import { resumeData } from "@/data/resumeContext";
 import { useChat } from "../chat/ChatContext";
 
@@ -109,13 +110,24 @@ export default function Experience() {
                           </li>
                         ))}
                       </ul>
-                      <button
-                        onClick={() => askAboutProject(proj.name)}
-                        className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-violet-300 hover:text-violet-200 transition-colors cursor-pointer"
-                      >
-                        <MessageSquareText className="w-3.5 h-3.5" />
-                        Ask the AI about this project
-                      </button>
+                      <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+                        {proj.caseStudyUrl && (
+                          <Link
+                            href={proj.caseStudyUrl}
+                            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-display font-black bg-violet-600 hover:bg-violet-500 text-white shadow-md shadow-violet-500/20 hover:-translate-y-0.5 transition-all active:scale-95 cursor-pointer"
+                          >
+                            Read full case study
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </Link>
+                        )}
+                        <button
+                          onClick={() => askAboutProject(proj.name)}
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-violet-300 hover:text-violet-200 transition-colors cursor-pointer"
+                        >
+                          <MessageSquareText className="w-3.5 h-3.5" />
+                          Ask the AI about this project
+                        </button>
+                      </div>
                     </div>
                   ))
                 ) : (

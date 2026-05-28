@@ -3,6 +3,7 @@ export interface Project {
   role: string;
   description: string;
   details: string[];
+  caseStudyUrl?: string;
 }
 
 export interface Experience {
@@ -77,6 +78,7 @@ export const resumeData: ResumeData = {
           name: "PsychUp – Mental Health Assessment Platform",
           role: "Lead Frontend Engineer",
           description: "A production-grade healthcare SaaS built from a blank repo — three role-based dashboards (therapist, patient, organization) with online psychometric testing, dynamic PDF reporting, and integrated payments.",
+          caseStudyUrl: "/case-study/psychup",
           details: [
             "Architected a multi-tenant React 19 + TypeScript platform from scratch as the sole frontend owner — three role-based shells (Therapist, Patient, Organization) sharing one design system across 100+ screens and 200+ components.",
             "Owned UI/UX end-to-end with no external design references — authored every screen, interaction pattern, design token, motion system, and component API, treating design as engineering.",

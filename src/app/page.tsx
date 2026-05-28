@@ -7,7 +7,6 @@ import PersonalWork from "@/components/sections/PersonalWork";
 import Playground from "@/components/sections/Playground";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
-import FloatingChat from "@/components/chat/FloatingChat";
 
 export default function Home() {
   return (
@@ -23,7 +22,6 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-      <FloatingChat />
     </>
   );
 }

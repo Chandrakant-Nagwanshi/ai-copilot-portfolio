@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Outfit } from "next/font/google";
 import "./globals.css";
 import { ChatProvider } from "@/components/chat/ChatContext";
+import FloatingChat from "@/components/chat/FloatingChat";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -70,7 +71,10 @@ export default function RootLayout({
         className="min-h-full flex flex-col font-sans selection:bg-violet-500/30 selection:text-violet-200"
         suppressHydrationWarning
       >
-        <ChatProvider>{children}</ChatProvider>
+        <ChatProvider>
+          {children}
+          <FloatingChat />
+        </ChatProvider>
       </body>
     </html>
   );
