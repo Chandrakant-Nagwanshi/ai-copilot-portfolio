@@ -154,11 +154,12 @@ export default function PersonalWork() {
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {projects.map((proj, i) => {
           const accent = accentMap[proj.accent];
           const Icon = proj.icon;
           const isLive = proj.status === "live";
+          const isFeatured = proj.name === "BidWars";
 
           return (
             <motion.article
@@ -167,72 +168,111 @@ export default function PersonalWork() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
               viewport={{ once: true, margin: "-80px" }}
-              className={`glass rounded-3xl p-6 md:p-7 relative overflow-hidden flex flex-col gap-5 ${accent.hoverBorder} transition-colors`}
+              className={`glass rounded-3xl p-6 md:p-7 relative overflow-hidden flex flex-col ${
+                isFeatured ? "lg:col-span-2 md:flex-row gap-6 md:items-stretch" : "lg:col-span-1 gap-5"
+              } ${accent.hoverBorder} transition-colors`}
             >
               <div className={`absolute -top-16 -right-16 w-40 h-40 rounded-full ${accent.glow} blur-3xl pointer-events-none`} />
 
-              <header className="flex items-start justify-between gap-3">
-                <div className={`w-11 h-11 rounded-xl ${accent.badge} border flex items-center justify-center shrink-0`}>
-                  <Icon className={`w-5 h-5 ${accent.icon}`} />
+              {/* Information Half */}
+              <div className="flex-1 flex flex-col gap-5 justify-between">
+                <div className="flex flex-col gap-4">
+                  <header className="flex items-start justify-between gap-3">
+                    <div className={`w-11 h-11 rounded-xl ${accent.badge} border flex items-center justify-center shrink-0`}>
+                      <Icon className={`w-5 h-5 ${accent.icon}`} />
+                    </div>
+                    <StatusBadge status={proj.status} />
+                  </header>
+
+                  <div>
+                    <h3 className="text-2xl font-display font-black text-white tracking-tight">{proj.name}</h3>
+                    <p className={`text-xs font-bold mt-1 ${accent.icon}`}>{proj.tagline}</p>
+                  </div>
+
+                  <p className="text-gray-300 text-xs md:text-sm leading-relaxed">{proj.description}</p>
+
+                  <div className="flex flex-wrap gap-1.5">
+                    {proj.stack.map((s) => (
+                      <span
+                        key={s}
+                        className="px-2.5 py-1 rounded-md text-[10px] font-bold bg-white/5 border border-white/10 text-gray-300"
+                      >
+                        {s}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <StatusBadge status={proj.status} />
-              </header>
 
-              <div>
-                <h3 className="text-2xl font-display font-black text-white tracking-tight">{proj.name}</h3>
-                <p className={`text-sm font-semibold mt-1 ${accent.icon}`}>{proj.tagline}</p>
+                <footer className="flex items-center gap-2 mt-auto pt-2">
+                  {isLive && proj.demoUrl ? (
+                    <a
+                      href={proj.demoUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={`flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-display font-black bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white shadow-lg shadow-violet-500/20 transition-all active:scale-95 cursor-pointer`}
+                    >
+                      Live demo <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  ) : (
+                    <button
+                      disabled
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-display font-black bg-white/5 border border-white/10 text-gray-500 cursor-not-allowed"
+                    >
+                      {proj.status === "in-progress" ? "Demo soon" : "Coming soon"}
+                    </button>
+                  )}
+
+                  {proj.githubUrl ? (
+                    <a
+                      href={proj.githubUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-display font-black bg-white/5 hover:bg-white/10 border border-white/10 text-gray-200 hover:text-white transition-all active:scale-95 cursor-pointer"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5" /> Code
+                    </a>
+                  ) : (
+                    <button
+                      disabled
+                      className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-display font-black bg-white/5 border border-white/10 text-gray-500 cursor-not-allowed"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5" /> Code
+                    </button>
+                  )}
+                </footer>
               </div>
 
-              <p className="text-gray-300 text-sm leading-relaxed">{proj.description}</p>
-
-              <div className="flex flex-wrap gap-1.5">
-                {proj.stack.map((s) => (
-                  <span
-                    key={s}
-                    className="px-2.5 py-1 rounded-md text-[11px] font-bold bg-white/5 border border-white/10 text-gray-300"
-                  >
-                    {s}
-                  </span>
-                ))}
-              </div>
-
-              <footer className="flex items-center gap-2 mt-auto pt-2">
-                {isLive && proj.demoUrl ? (
-                  <a
-                    href={proj.demoUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={`flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-display font-black bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white shadow-lg shadow-violet-500/20 transition-all active:scale-95 cursor-pointer`}
-                  >
-                    Live demo <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                ) : (
-                  <button
-                    disabled
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-display font-black bg-white/5 border border-white/10 text-gray-500 cursor-not-allowed"
-                  >
-                    {proj.status === "in-progress" ? "Demo soon" : "Coming soon"}
-                  </button>
-                )}
-
-                {proj.githubUrl ? (
-                  <a
-                    href={proj.githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-display font-black bg-white/5 hover:bg-white/10 border border-white/10 text-gray-200 hover:text-white transition-all active:scale-95 cursor-pointer"
-                  >
-                    <GithubIcon className="w-3.5 h-3.5" /> Code
-                  </a>
-                ) : (
-                  <button
-                    disabled
-                    className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-display font-black bg-white/5 border border-white/10 text-gray-500 cursor-not-allowed"
-                  >
-                    <GithubIcon className="w-3.5 h-3.5" /> Code
-                  </button>
-                )}
-              </footer>
+              {/* Bespoke Human-built Code Snippet Register for Featured card */}
+              {isFeatured && (
+                <div className="hidden md:flex flex-col w-[320px] shrink-0 bg-[#070709] border border-white/5 rounded-2xl overflow-hidden text-[9px] font-mono leading-relaxed p-4 h-full relative shadow-inner">
+                  <div className="absolute top-3 right-3 px-2 py-0.5 rounded bg-violet-500/10 text-violet-400 border border-violet-500/20 text-[8px] font-black uppercase tracking-widest font-display">
+                    useBiddingFeed.ts
+                  </div>
+                  <div className="text-gray-500 border-b border-white/5 pb-2 mb-3 uppercase text-[8px] font-black tracking-widest font-display flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse shadow-md shadow-violet-500/50" />
+                    STOMP WebSocket Sync Hook
+                  </div>
+                  <pre className="text-gray-300 overflow-x-auto whitespace-pre h-[180px] scrollbar-thin select-text">
+                    <code className="text-gray-400">
+                      <span className="text-violet-400">{"function"}</span> <span className="text-violet-300">{"useBiddingFeed"}</span>{"(tenderId: string) {"}
+                      {"\n  const [bids, setBids] = useState([]);"}
+                      {"\n  useEffect(() => {"}
+                      {"\n    const sock = new SockJS(\"/ws-api\");"}
+                      {"\n    const client = Stomp.over(sock);"}
+                      {"\n    client.connect({}, () => {"}
+                      {"\n      client.subscribe(`/auction/${tenderId}`, (msg) => {"}
+                      {"\n        const newBid = JSON.parse(msg.body);"}
+                      {"\n        setBids(prev => [newBid, ...prev].slice(0, 5));"}
+                      {"\n      });"}
+                      {"\n    });"}
+                      {"\n    return () => client.disconnect();"}
+                      {"\n  }, [tenderId]);"}
+                      {"\n  return bids;"}
+                      {"\n}"}
+                    </code>
+                  </pre>
+                </div>
+              )}
             </motion.article>
           );
         })}

@@ -4,6 +4,29 @@
   --font-sans: var(--font-outfit), sans-serif;
   --font-display: var(--font-space-grotesk), sans-serif;
 
+  /* Custom Color Overrides for Bespoke Sage & Carbon Aesthetic */
+  --color-violet-50:  #ECFDF5;
+  --color-violet-100: #D1FAE5;
+  --color-violet-200: #A7F3D0;
+  --color-violet-300: #34D399; /* Vibrant Light Sage */
+  --color-violet-400: #10B981; /* Primary Brand Sage Green */
+  --color-violet-500: #059669; /* Emerald Brand */
+  --color-violet-600: #047857; /* Deep Jade */
+  --color-violet-700: #065F46;
+  --color-violet-800: #064E3B;
+  --color-violet-900: #022C22;
+
+  --color-cyan-50:  #F8FAFC;
+  --color-cyan-100: #F1F5F9;
+  --color-cyan-200: #E2E8F0;
+  --color-cyan-300: #94A3B8; /* Slate Gray Accent */
+  --color-cyan-400: #64748B; /* Primary Secondary Slate */
+  --color-cyan-500: #475569;
+  --color-cyan-600: #334155;
+  --color-cyan-700: #1E293B;
+  --color-cyan-800: #0F172A;
+  --color-cyan-900: #020617;
+
   --animate-pulse-slow: pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-float: float 12s ease-in-out infinite;
   --animate-gradient: gradient-shift 14s ease infinite;
@@ -33,12 +56,12 @@
 }
 
 :root {
-  --background: #08080A;
+  --background: #070709;
   --foreground: #F3F4F6;
-  --violet:     #8B5CF6;
-  --cyan:       #22D3EE;
-  --emerald:    #34D399;
-  --amber:      #F59E0B;
+  --violet:     #10B981; /* Shift brand variables to Sage Green */
+  --cyan:       #64748B; /* Shift secondary to steel slate */
+  --emerald:    #059669; /* Rich dark sage */
+  --amber:      #34D399; /* Light mint/sage */
 }
 
 html { scroll-behavior: smooth; }
@@ -55,8 +78,8 @@ body {
 .grid-overlay {
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
   background-size: 40px 40px;
   background-position: center;
   pointer-events: none;
@@ -67,19 +90,19 @@ body {
 .noise-overlay {
   position: absolute; inset: 0;
   pointer-events: none;
-  opacity: 0.04;
+  opacity: 0.035;
   z-index: 1;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Conic gradient mesh for hero */
+/* Conic gradient mesh for hero - beautiful organic green tones */
 .mesh-gradient {
   position: absolute; inset: 0;
   background:
-    radial-gradient(at 20% 25%, rgba(139, 92, 246, 0.25) 0px, transparent 50%),
-    radial-gradient(at 80% 10%, rgba(34, 211, 238, 0.18) 0px, transparent 50%),
-    radial-gradient(at 75% 75%, rgba(139, 92, 246, 0.18) 0px, transparent 50%),
-    radial-gradient(at 15% 80%, rgba(52, 211, 153, 0.12) 0px, transparent 50%);
+    radial-gradient(at 20% 25%, rgba(16, 185, 129, 0.16) 0px, transparent 50%),
+    radial-gradient(at 80% 10%, rgba(52, 211, 153, 0.1) 0px, transparent 50%),
+    radial-gradient(at 75% 75%, rgba(16, 185, 129, 0.12) 0px, transparent 50%),
+    radial-gradient(at 15% 80%, rgba(100, 116, 139, 0.08) 0px, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -87,40 +110,40 @@ body {
 /* Section dividers */
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
 }
 
 /* Glass card — uses backdrop-filter; expensive when many overlap on screen */
 .glass {
-  background: rgba(18, 18, 21, 0.55);
+  background: rgba(15, 15, 17, 0.65);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 /* Solid panel — same visual register as .glass without backdrop-filter cost.
    Use on dense pages (e.g. case studies) where many cards are visible at once
    and the always-running compositing of .glass causes scroll jank. */
 .panel {
-  background: rgba(20, 20, 24, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(16, 16, 19, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Text gradient utility */
+/* Text gradient utility - beautiful pure silver-sage gradient */
 .text-gradient {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  background-image: linear-gradient(135deg, #FFFFFF 0%, #C4B5FD 50%, #67E8F9 100%);
+  background-image: linear-gradient(135deg, #FFFFFF 0%, #A7F3D0 50%, #10B981 100%);
 }
 
 /* Shimmer for skeleton / loading bars */
 .shimmer {
   background: linear-gradient(
     90deg,
-    rgba(255,255,255,0.04) 0%,
-    rgba(255,255,255,0.12) 50%,
-    rgba(255,255,255,0.04) 100%
+    rgba(255,255,255,0.02) 0%,
+    rgba(255,255,255,0.08) 50%,
+    rgba(255,255,255,0.02) 100%
   );
   background-size: 200% 100%;
   animation: shimmer 2.5s linear infinite;
