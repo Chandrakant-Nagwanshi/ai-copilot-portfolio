@@ -75,14 +75,16 @@ export const resumeData: ResumeData = {
       projects: [
         {
           name: "PsychUp – Mental Health Assessment Platform",
-          role: "Team Lead",
-          description: "A secure, multi-role web platform supporting registration, appointment booking, psychological evaluations, and scoring logic.",
+          role: "Lead Frontend Engineer",
+          description: "A production-grade healthcare SaaS built from a blank repo — three role-based dashboards (therapist, patient, organization) with online psychometric testing, dynamic PDF reporting, and integrated payments.",
           details: [
-            "Coordinated a small team of frontend developers to architect a secure, multi-role web platform (Admin, Organization, Therapist, Patient) featuring protected routes, role-based access, and token lifecycle management.",
-            "Engineered a dynamic timed test engine with automated scoring logic and custom report generation for patient evaluations.",
-            "Designed client-server state architecture combining Redux Toolkit (for global state) and React Query (for server caching), minimizing redundant API network requests by 40%.",
-            "Improved Lighthouse performance score and cut initial page load times by 30% by implementing custom code-splitting, bundle chunking, and lazy loading strategies.",
-            "Enforced strong code quality standards through strict Git workflows (feature branching, rebasing, pull requests) and peer reviews, reducing UI bugs in production."
+            "Architected a multi-tenant React 19 + TypeScript platform from scratch as the sole frontend owner — three role-based shells (Therapist, Patient, Organization) sharing one design system across 100+ screens and 200+ components.",
+            "Owned UI/UX end-to-end with no external design references — authored every screen, interaction pattern, design token, motion system, and component API, treating design as engineering.",
+            "Engineered a Playwright-driven headless-browser PDF pipeline producing print-quality clinical reports — the same React component renders across in-app preview, public share page, and PDF print via one shared CSS contract.",
+            "Built a registry-based report system covering 15+ standardized psychometric assessments (BDI, Big Five, and more) — adding a new test is a single folder drop, no cross-cutting changes.",
+            "Designed client-server state architecture combining TanStack Query (server cache) and Redux Toolkit + redux-persist (auth/UI), with Axios interceptors for token refresh, error normalization, and request deduplication — cut redundant API calls by ~40%.",
+            "Cut initial page load by 30% via route-level code splitting, list virtualization for 1000+ row tables, memoized chart subtrees, and skeleton-driven loading on every async surface.",
+            "Built a fully tokenized design system on Radix UI + Tailwind 4 with theme-aware Recharts/Nivo palettes — consistent typography, motion, and spacing across the entire platform with light/dark mode support."
           ]
         },
         {

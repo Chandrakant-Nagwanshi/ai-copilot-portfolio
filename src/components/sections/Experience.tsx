@@ -93,7 +93,7 @@ export default function Experience() {
                       <div className="flex items-start justify-between gap-3 mb-3">
                         <h4 className="text-lg md:text-xl font-display font-black text-white flex items-center gap-2 flex-wrap">
                           {proj.name}
-                          {proj.role === "Team Lead" && (
+                          {proj.role !== "Frontend Developer" && (
                             <span className="px-2 py-0.5 rounded text-[10px] font-black bg-amber-500/10 text-amber-400 border border-amber-500/20 uppercase tracking-widest font-display">
                               {proj.role}
                             </span>
